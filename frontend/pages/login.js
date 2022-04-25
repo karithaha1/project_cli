@@ -2,9 +2,9 @@ import Head from 'next/head'
 import Layout from '../components/layout'
 import { useState } from 'react'
 import Navbar from '../components/navbar'
-import styles from '../styles/Home.module.css'
-// import axios from 'axios'
+import axios from 'axios'
 import config from '../config/config'
+import Link from 'next/link'
 
 export default function Login({ token }) {
 
@@ -29,26 +29,28 @@ export default function Login({ token }) {
     }
 
     const loginForm = () => (
-        <div className={styles.gridContainer}>
-            <div>
-                Username:
-            </div>
-            <div>
-                <input type="text"
+        <div>
+            <div class="mt-5">
+                <label for="username">Username</label>
+                <input
+                    class="block w-full p-2 border rounded border-gray-500"
+                    type="text"
                     name="username"
                     placeholder="username"
                     onChange={(e) => setUsername(e.target.value)}
                 />
             </div>
-            <div>
-                Password:
-            </div>
-            <div>
-                <input type="password"
+
+            <div class="mt-5">
+                <label for="password">Password</label>
+                <input
+                    class="block w-full p-2 border rounded border-gray-500"
+                    type="password"
                     name="password"
                     placeholder="password"
                     onChange={(e) => setPassword(e.target.value)} />
             </div>
+
         </div>
     )
 
@@ -57,27 +59,23 @@ export default function Login({ token }) {
     }
 
     return (
-        <Layout>
-            <Head>
-                <title>Login</title>
-            </Head>
-            <div className={styles.container}>
-                <Navbar />
-                <h1>Login</h1>
-                {/* <div><b>Token:</b> {token.substring(0, 15)}...
-                <button onClick={copyText}> Copy token </button>
-                </div>
-                <br/>
-                <div>
-                    Status:  {status}
-                </div> */}
-                <br />
-                {loginForm()}
-                <div>
-                    <button onClick={login}>Login</button>
-                </div>
+    <div class="container mx-auto p-2">
+        <div class="max-w-sm mx-auto my-24 bg-white px-5 py-10 rounded shadow-xl">
+            <div class="text-center mb-8">
+            <h1 class="font-bold text-2xl font-bold">SignIn</h1>
             </div>
-        </Layout>
+            {loginForm()}
+            <div className='mt-3'>Status: {status} </div>
+            
+            <div className='flex'>
+                <button class="mr-2 mt-10 py-3 bg-green-500 hover:bg-green-600 rounded text-white text-center w-full" onClick={login}>SignIn</button>
+                <button class="mt-10 py-3 bg-green-500 hover:bg-green-600 rounded text-white text-center w-full"><Link href="/register"><a> SignUp </a></Link></button>
+                
+            </div>
+
+
+        </div>  
+    </div>
     )
 }
 
