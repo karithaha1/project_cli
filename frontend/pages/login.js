@@ -54,28 +54,38 @@ export default function Login({ token }) {
         </div>
     )
 
-    const copyText = () => {
-        navigator.clipboard.writeText(token)
-    }
-
     return (
-    <div class="container mx-auto p-2">
+
+    <Layout>
+        <div className='bg-indigo-200 text-indigo-500  h-screen'>
+
+        <Head>
+            <Navbar/>
+        </Head>
+
+        <div class="container mx-auto p-2">
         <div class="max-w-sm mx-auto my-24 bg-white px-5 py-10 rounded shadow-xl">
             <div class="text-center mb-8">
-            <h1 class="font-bold text-2xl font-bold">SignIn</h1>
+            <h1 class="font-bold text-2xl font-bold">LogIn</h1>
             </div>
             {loginForm()}
             <div className='mt-3'>Status: {status} </div>
             
             <div className='flex'>
-                <button class="mr-2 mt-10 py-3 bg-green-500 hover:bg-green-600 rounded text-white text-center w-full" onClick={login}>SignIn</button>
-                <button class="mt-10 py-3 bg-green-500 hover:bg-green-600 rounded text-white text-center w-full"><Link href="/register"><a> SignUp </a></Link></button>
+                <button class="mr-2 mt-10 py-3 bg-green-500 hover:bg-green-600 rounded text-white text-center w-full" onClick={login}>LogIn</button>
+                <button class="mt-10 py-3 bg-green-500 hover:bg-green-600 rounded text-white text-center w-full"><Link href="register"><a> Register </a></Link></button>
                 
             </div>
 
 
         </div>  
     </div>
+
+        </div>
+        
+
+    </Layout>
+    
     )
 }
 
